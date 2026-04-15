@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamsale Entertainment | Weddings & Events</title>
+<style>
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-strong: #e8f0ff;
+  --text: #152341;
+  --muted: #5f6f8d;
+  --primary: #0f3b6f;
+  --accent: #ffd966;
+  --shadow: 0 20px 45px rgba(15, 59, 111, 0.12);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+button,
+.btn {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+header {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  background: rgba(15, 59, 111, 0.98);
+  color: #f7fbff;
+  z-index: 100;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+.header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.brand-text {
+  line-height: 1.1;
+}
+.brand-text strong {
+  display: block;
+  font-size: 1.1rem;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+nav a {
+  color: #dfeeff;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+nav a:hover {
+  color: var(--accent);
+}
+main {
+  padding-top: 100px;
+}
+.hero {
+  min-height: calc(100vh - 100px);
+  position: relative;
+  background-color: #0f3b6f;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: white;
+  padding: 40px 24px;
+}
+.hero-content {
+  max-width: 920px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  color: #f3f7ff;
+  margin-bottom: 24px;
+  font-size: 0.94rem;
+}
+.hero h1 {
+  font-size: clamp(2.7rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+.hero p {
+  margin: 22px auto 0;
+  max-width: 680px;
+  color: rgba(255,255,255,0.88);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+.hero-actions {
+  margin-top: 32px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.btn,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #152341;
+  box-shadow: 0 18px 30px rgba(255, 217, 102, 0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.14);
+  color: #f7fbff;
+}
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+.section {
+  padding: 90px 24px;
+}
+.section.surface {
+  background: var(--surface);
+}
+.section-header {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.section-header h2 {
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  color: var(--primary);
+  margin-bottom: 18px;
+}
+.section-header p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.stats-grid,
+.services-grid,
+.gallery-grid,
+.testimonial-grid,
+.video-grid {
+  display: grid;
+  gap: 24px;
+}
+.stats-grid {
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+}
+.stat-card {
+  background: var(--surface-strong);
+  border-radius: 22px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.stat-card strong {
+  display: block;
+  font-size: 2.2rem;
+  color: var(--primary);
+}
+.stat-card span {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+}
+.services-grid {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-snap-type: x mandatory;
+}
+.services-grid::-webkit-scrollbar {
+  height: 8px;
+}
+.services-grid::-webkit-scrollbar-track {
+  background: var(--surface-strong);
+  border-radius: 4px;
+}
+.services-grid::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+.service-card {
+  color: white;
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.service-card::after {
+  content: '→';
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+.service-card:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+.service-card:nth-child(1) { background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%); }
+.service-card:nth-child(2) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.service-card:nth-child(3) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.service-card:nth-child(4) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.service-card:nth-child(5) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.service-card h3 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+.service-card p {
+  color: rgba(255,255,255,0.88);
+  line-height: 1.85;
+}
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.1);
+}
+.video-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.video-grid iframe {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 20px;
+  border: 0;
+}
+.testimonial-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.testimonial-card {
+  padding: 28px;
+  border-radius: 24px;
+  background: #eef5ff;
+  box-shadow: var(--shadow);
+}
+.testimonial-card p {
+  color: #2c3d6c;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.testimonial-card strong {
+  display: block;
+  color: var(--primary);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 32px;
+  align-items: start;
+}
+.contact-card,
+form.contact-form {
+  background: var(--surface);
+  border-radius: 28px;
+  padding: 34px 32px;
+  box-shadow: var(--shadow);
+}
+.contact-card h3 {
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+.contact-card p,
+.contact-card li {
+  color: var(--muted);
+  line-height: 1.9;
+}
+.contact-card ul {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+.contact-card li {
+  margin-bottom: 14px;
+}
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: #f8fbff;
+  border: 1px solid #d7e2f5;
+  border-radius: 14px;
+  padding: 14px 16px;
+  color: var(--text);
+  font-size: 1rem;
+}
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.contact-form button {
+  width: fit-content;
+  background: var(--primary);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 999px;
+}
+.contact-form button:hover {
+  opacity: 0.95;
+}
+.footer {
+  padding: 28px 24px;
+  text-align: center;
+  color: #dfe7fc;
+  background: #10294f;
+}
+.footer p {
+  max-width: 740px;
+  margin: 0 auto;
+  color: #cbd5ef;
+}
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 18px 40px rgba(37, 211, 102, 0.24);
+  display: grid;
+  place-items: center;
+  z-index: 150;
+}
+.whatsapp-float img {
+  width: 32px;
+}
+@media (max-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  nav {
+    justify-content: center;
+  }
+  .hero {
+    min-height: 80vh;
+  }
+  .stats-grid,
+  .testimonial-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="#home" class="brand">
+      <img src="logo.jpg" alt="Kamsale Entertainment Logo" />
+      <span class="brand-text"><strong>Kamsale Entertainment</strong><small>Traditional wedding artists</small></span>
+    </a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" id="home">
+  <video src="title.mp4" autoplay muted loop playsinline style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"></video>
+    <div class="hero-content" style="position: relative; z-index: 2;">
+      <span class="hero-eyebrow">Traditional Entertainment for Weddings & Events</span>
+      <h1>Kamsale Entertainment — Bringing Culture to Life at Every Celebration</h1>
+      <p>We deliver authentic Kamsale and folk performances for weddings, temple functions, corporate events and festivals across Karnataka. Create memorable rituals, graceful rhythm, and powerful stage energy in one complete package.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Book via WhatsApp</a>
+        <a class="btn btn-secondary" href="#services">Explore Services</a>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="section surface">
+    <div class="section-header">
+      <h2>About Us</h2>
+      <p>Kamsale Entertainment preserves Karnataka’s living tradition through dynamic temple art and cultural shows. Our artists perform with powerful drums, cymbals, and devotional routines that inspire guests and create a truly immersive celebration.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><strong>100+</strong><span>Successful events</span></div>
+      <div class="stat-card"><strong>50+</strong><span>Weddings served</span></div>
+      <div class="stat-card"><strong>8</strong><span>Years of experience</span></div>
+      <div class="stat-card"><strong>100%</strong><span>Client satisfaction</span></div>
+    </div>
+  </section>
+  <section id="services" class="section">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>From custom rituals to event entertainment, we provide end-to-end cultural performance solutions for your wedding, reception, temple event or festival.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card">
+        <h3>Cultural Performances</h3>
+        <p>Traditional Kamsale routines with drums, cymbals, and temple-style rhythm that deliver a devotional experience.</p>
+      </article>
+      <article class="service-card">
+        <h3>Wedding Entertainment</h3>
+        <p>Full-scale wedding acts that complement your ceremony and reception with drama, heritage and artistic energy.</p>
+      </article>
+      <article class="service-card">
+        <h3>Temple Events</h3>
+        <p>Devotional shows and processions for temple festivals, poojas, and special ritual celebrations.</p>
+      </article>
+      <article class="service-card">
+        <h3>Corporate & Private Events</h3>
+        <p>Memorable performances tailored for corporate gatherings, launches, anniversaries and family celebrations.</p>
+      </article>
+      <article class="service-card">
+        <h3>Customized Shows</h3>
+        <p>Personalized cultural programs built around your theme, schedule, and venue requirements.</p>
+      </article>
+    </div>
+  </section>
+  <section id="gallery" class="section surface">
+    <div class="section-header">
+      <h2>Gallery</h2>
+      <p>Snapshots from our performances and event presentations, featuring costumes, staging, and the vibrant energy of Kamsale art.</p>
+    </div>
+    <div class="gallery-grid">
+      <img src="0.jpeg" alt="Performance 1">
+      <img src="1.jpeg" alt="Performance 1">
+      <img src="2.jpeg" alt="Performance 2">
+      <img src="3.jpeg" alt="Performance 3">
+      <img src="4.jpeg" alt="Performance 4">
+      <img src="5.jpeg" alt="Performance 5">
+      <img src="6.jpeg" alt="Performance 6">
+      <img src="8.jpeg" alt="Performance 7">
+      <img src="9.jpeg" alt="Performance 8">
+      <img src="22.jpeg" alt="Performance 9">
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-header">
+      <h2>Client Testimonials</h2>
+      <p>Trusted by families and event planners for authentic performances, seamless service, and memorable cultural moments.</p>
+    </div>
+    <div class="testimonial-grid">
+      <article class="testimonial-card">
+        <p>Amazing performance! It added a divine vibe to our wedding and every guest was impressed.</p>
+        <strong>- Happy Client</strong>
+      </article>
+      <article class="testimonial-card">
+        <p>Highly professional team and stunning traditional choreography. The event felt complete.</p>
+        <strong>- Event Organizer</strong>
+      </article>
+      <article class="testimonial-card">
+        <p>Guests loved the traditional touch and the artists were friendly, punctual and skilled.</p>
+        <strong>- Family Member</strong>
+      </article>
+      <article class="testimonial-card">
+        <p>The puja performance and procession were beautifully executed. The energy was unforgettable.</p>
+        <strong>- Bride & Groom</strong>
+      </article>
+    </div>
+  </section>
+  <section id="contact" class="section surface">
+    <div class="section-header">
+      <h2>Book Your Event Today</h2>
+      <p>Reserve your date now and connect directly on WhatsApp for fast booking and planning support.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Details</h3>
+        <p><strong>Location:</strong> Bangalore, Karnataka</p>
+        <p><strong>Available across India</strong></p>
+        <ul>
+          <li>Email: <a href="mailto:thewittyenterprise.com">thewittyenterprise.com</a></li>
+          <li>Phone: <a href="tel:+918660055132">+91 86600 55132</a></li>
+          <li>WhatsApp: <a href="https://api.whatsapp.com/send?phone=918660055132&text=Hello%20Kamsale%20Entertainment,%20I%20want%20to%20book%20your%20services." target="_blank">Chat now</a></li>
+        </ul>
+        <p>Tell us your event date, venue and audience size so we can plan the perfect performance.</p>
+      </div>
+      <form id="bookingForm" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+        <input type="date" name="date" required />
+        <input type="text" name="venue" placeholder="Venue / City" required />
+        <textarea name="notes" rows="5" placeholder="Event details or questions"></textarea>
+        <button type="submit">Send Booking Request</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <p>© 2026 Kamsale Entertainment. Traditional Kamsale performances, wedding shows, and event experiences across Karnataka.</p>
+</footer>
+<a class="whatsapp-float" href="https://api.whatsapp.com/send?phone=918660055132&text=Hello%20Kamsale%20Entertainment,%20I%20would%20like%20to%20book%20your%20services." target="_blank" aria-label="WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
+<script>
+const form = document.getElementById('bookingForm');
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const data = new FormData(form);
+  const message = encodeURIComponent(
+    `Kamsale Entertainment Booking Request:\n` +
+    `Name: ${data.get('name')}\n` +
+    `Phone: ${data.get('phone')}\n` +
+    `Date: ${data.get('date')}\n` +
+    `Venue: ${data.get('venue')}\n` +
+    `Notes: ${data.get('notes')}`
+  );
+  window.open(`https://api.whatsapp.com/send?phone=918660055132&text=${message}`, '_blank');
+});
+</script>
+</body>
+</html>
