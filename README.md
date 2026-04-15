@@ -54,8 +54,8 @@ Our portfolio includes:
 
 ## 📞 Contact Us
 📍 Bangalore, India  
-📱 WhatsApp Available  
-📧 Email: your@email.com  
+📱 WhatsApp Available : 6364684957
+📧 Email: skarthigeyan08@gmail.com
 
 ---
 
